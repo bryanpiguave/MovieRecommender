@@ -26,7 +26,7 @@ tfv = TfidfVectorizer(min_df=3,  max_features=None,
 
 # Fitting the TF-IDF on the 'overview' text
 movies_clean['overview'] = movies_clean['overview'].fillna('')
-    
+
 tfv_matrix = tfv.fit_transform(movies_clean['overview'])
 movies_scaled = min_max_scaler.fit_transform(movies_clean[['weighted_average', 'popularity']])
 movies_norm = pd.DataFrame(movies_scaled, columns=['weighted_average', 'popularity'])
@@ -63,7 +63,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Movie": "Recommender"}
 
 
 @app.get("/item/{item_id}")
